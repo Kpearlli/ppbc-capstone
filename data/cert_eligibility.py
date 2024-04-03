@@ -2,18 +2,15 @@ import pandas as pd
 
 # Define the eligibility criteria
 def passing_score(score):
-    if isinstance(score, str):
-        # Check if the value is 'completed'
+    if isinstance(score, str):  # Check for "completed" data
         if score.lower().strip( ) == 'completed':
-            return True  # Not a passing score
+            return True  
         else:
             try:
-                score = float(score.rstrip('%'))
+                score = float(score.rstrip('%')) # Check for scores data
                 return score >= 55
             except ValueError:
-                return False  # Non-numeric string
-    elif isinstance(score, (int, float)):
-        return score >= 55
+                return False 
     else:
         return False
 
